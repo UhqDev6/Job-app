@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function SearchCheckbox() {
+function SearchCheckbox(props) {
+  const {
+    search,
+    searchChange,
+  } = props;
   return (
     <div>
       <input
         type="checkbox"
-        value=""
+        value={search}
         className="w-4 h-4 cursor-pointer"
         placeholder="Search"
-        onChange=""
-        checked=""
+        onChange={(event) => {
+          searchChange(event.target.checked);
+        }}
       />
     </div>
   );
 }
+
+SearchCheckbox.propTypes = {
+  search: PropTypes.string.isRequired,
+  searchChange: PropTypes.func.isRequired,
+};
 
 export default SearchCheckbox;
