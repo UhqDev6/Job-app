@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
@@ -7,15 +6,14 @@ import { DETAIL_PAGE, HOME_PAGE } from './constants/path';
 import DetailPage from './pages/DetailPage';
 import HomePage from './pages/HomePage';
 import './style/App.css';
-import Button from './components/atoms/Button';
 
-function App() {
+export default function App() {
   const [user, setUser] = useState({});
 
   const handleCallbackResponse = (response) => {
-    console.log(`encoded JWT ${response.credential}`);
+    // console.log(`encoded JWT ${response.credential}`);
     const userObject = jwtDecode(response.credential);
-    console.log(userObject);
+    // console.log(userObject);
     setUser(userObject);
     document.getElementById('signInDiv').hidden = true;
   };
@@ -25,6 +23,7 @@ function App() {
     document.getElementById('signInDiv').hidden = false;
   };
   useEffect(() => {
+    /* global google */
     google.accounts.id.initialize({
       client_id: '467734937742-ebd3kr8s7824ma80bv7448ku9hpimk34.apps.googleusercontent.com',
       callback: handleCallbackResponse,
@@ -79,5 +78,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

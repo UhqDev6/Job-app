@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { postedAt } from '../../utils';
+import SpinnerLoading from '../atoms/SpinnerLoading';
 
 export default function ListJob(props) {
   const {
@@ -12,11 +13,11 @@ export default function ListJob(props) {
     <div>
       {
         isLoading ? (
-          <p>loading</p>
+          <SpinnerLoading />
         ) : (
           job.map((jobList) => (
             <div key={jobList?.id}>
-              <div className="w-full mt-5 flex gap-2 border-b-[0.1px] border-pink-100">
+              <div className="w-full mt-5 flex gap-2 border-b-[1px] border-pink-100">
                 <div className="flex-none">
                   <div className="max-w-[4rem] max-h-[4rem] rounded-full mx-auto">
                     <img src={jobList?.company_logo} alt={jobList?.company_logo} />

@@ -6,6 +6,7 @@ import parse from 'html-react-parser';
 
 import { postedAt } from '../../utils';
 import Button from '../atoms/Button';
+import SpinnerLoading from '../atoms/SpinnerLoading';
 
 function DetailItem(props) {
   const { id } = props;
@@ -49,7 +50,7 @@ function DetailItem(props) {
     <div>
       {
         isLoading ? (
-          <p>loading</p>
+          <SpinnerLoading />
         ) : (
           <div>
             <div>
@@ -63,16 +64,13 @@ function DetailItem(props) {
               <div className="w-full flex gap-2">
                 <div className="flex-none">
                   <Link to={detailData?.company_url}>
-                    <p className="text-sm mt-2 text-slate-500 hover:underline">
+                    <p className="text-sm mt-2 text-slate-500 hover:underline w-36">
                       {
                         detailData?.company
                       }
                     </p>
                   </Link>
                 </div>
-                <p className="text-sm mt-2 text-slate-500">
-                  { ' , ' }
-                </p>
                 <div className="flex-none">
                   <p className="text-sm mt-2 text-slate-500">
                     (
@@ -85,7 +83,7 @@ function DetailItem(props) {
                 <p className="text-sm mt-2 text-slate-500">
                   { ' - ' }
                 </p>
-                <div className="w-full flex-initial">
+                <div className="flex-initial">
                   <p className="text-xs mt-[10px] text-green-800 font-medium">
                     {
                       postedAt(detailData?.created_at)
@@ -119,7 +117,7 @@ function DetailItem(props) {
                 type="button"
                 className="border-pink-500 border-[1px] text-pink-500 p-2 text-[10px] mt-4 w-16"
               >
-                <p className="mx-auto">
+                <p className="mx-auto text-pink-500">
                   Save
                 </p>
               </Button>
